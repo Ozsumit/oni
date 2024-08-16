@@ -32,7 +32,7 @@ export const TextGenerateEffect = ({
               },
               {
                 duration: duration ? duration : 1,
-                delay: stagger(0.2),
+                delay: stagger(0.1),
               }
             );
           }
@@ -60,7 +60,7 @@ export const TextGenerateEffect = ({
           return (
             <motion.span
               key={word + idx}
-              className="dark:text-white text-black opacity-0"
+              className="text-[#d6d6d6]  font-mono opacity-0"
               style={{
                 filter: filter ? "blur(10px)" : "none",
               }}
@@ -78,7 +78,7 @@ export const TextGenerateEffect = ({
       <div className="mt-4">
         <div
           ref={observerRef}
-          className="dark:text-white text-black text-2xl leading-snug tracking-wide"
+          className=" text-[#d6d6d6] leading-snug font-mono tracking-wide"
         >
           {renderWords()}
         </div>

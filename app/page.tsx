@@ -6,6 +6,7 @@ import { BackgroundGradientAnimation } from "@/components/ui/gradient";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { TextGenerateEffect } from "@/components/ui/text";
+import ProfileCard from "@/components/ui/aboutme";
 // import Navigation from "@/components/ui/navigation";
 
 export default function Home() {
@@ -61,22 +62,7 @@ export default function Home() {
             />
           </div>
           <HoverEffect className="w-3/4 " items={items} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
+          <ProfileCard className="w-3/4" />
         </BackgroundGradientAnimation>
       </div>
     </main>

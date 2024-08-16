@@ -21,20 +21,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <div className="w-full absolute inset-0 h-screen">
-        <SparklesCore
-          id="tsparticlesfullpage"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
-      </div>{" "}
-      <body className="bg-black flex   flex-col overflow-x-hidden">
-        <Navigation />
-        {children}
+      <body className="bg-black w-full overflow-x-hidden">
+        <div className="w-full absolute inset-0 z-10 h-screen">
+          <SparklesCore
+            id="tsparticlesfullpage"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={100}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+          />
+        </div>{" "}
+        <div className="">
+          <Navigation />
+          {children}
+        </div>
       </body>
     </html>
   );

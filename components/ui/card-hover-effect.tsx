@@ -1,12 +1,12 @@
-// components/ui/card-hover-effect.tsx
 "use client";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-// import Iframe from "./iframe";
+import { useState, useEffect, useRef } from "react";
+import { useIntersectionObserver } from "@/components/ui/observerapi";
 import styles from "../styles/CardAnimation.module.css";
-
+import { TextGenerateEffect } from "./text";
+// const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 export const HoverEffect = ({
   items,
   className,
@@ -22,10 +22,31 @@ export const HoverEffect = ({
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [animated, setAnimated] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useEffect(() => {
-    setAnimated(true);
-  }, []);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setAnimated(true);
+            setHasAnimated(true); // Prevent re-animation on subsequent scrolls
+            observer.disconnect(); // Disconnect observer after animation
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardRefs.current.forEach((card) => {
+      if (card) {
+        observer.observe(card);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
 
   return (
     <div
@@ -46,6 +67,9 @@ export const HoverEffect = ({
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
           onClick={() => onCardClick && onCardClick(item.description)}
+          ref={(el: HTMLAnchorElement | null) => {
+            if (el) cardRefs.current[idx] = el;
+          }}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
@@ -70,11 +94,12 @@ export const HoverEffect = ({
                 <h4 className="text-zinc-100 font-bold tracking-wide mt-0 text-xl">
                   {item.title}
                 </h4>
-                <p className="mt-5 text-zinc-400 tracking-wide leading-relaxed text-md">
-                  {item.description}
-                </p>
+
+                <TextGenerateEffect
+                  className="mt-5 text-zinc-400 tracking-wide leading-relaxed text-md"
+                  words={item.description}
+                />
               </div>
-              {/* <Iframe identifier={item.link} /> */}
             </div>
           </div>
         </Link>
