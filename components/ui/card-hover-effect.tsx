@@ -11,6 +11,7 @@ export const HoverEffect = ({
   items,
   className,
   onCardClick,
+  id,
 }: {
   items: {
     title: string;
@@ -19,6 +20,7 @@ export const HoverEffect = ({
   }[];
   className?: string;
   onCardClick?: (description: string) => void;
+  id?: string;
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [animated, setAnimated] = useState(false);
@@ -52,7 +54,8 @@ export const HoverEffect = ({
     <div
       className={cn(
         "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10",
-        className
+        className,
+        id
       )}
     >
       {items.map((item, idx) => (

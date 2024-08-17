@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className=" scroll-smooth">
       <body className="bg-black w-full ">
         <div className="w-full absolute inset-0 z-10 h-screen">
           <SparklesCore

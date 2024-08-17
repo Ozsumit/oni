@@ -17,8 +17,8 @@ export const ProfileCard = ({ className }: { className?: string }) => {
     >
       {/* Main Profile Section */}
       <div className="flex z-50 flex-col items-center text-center p-4 rounded-2xl border border-white dark:border-white/[0.2] group-hover:border-slate-700 md:w-2/3">
-        <h2 className="text-3xl font-bold mb-0">Who am I??</h2>
-        <div className="w-32 h-32 rounded-md overflow-hidden mb-0">
+        <h2 className="text-3xl font-bold mb-4">Who am I??</h2>
+        <div className="w-36 h-36 rounded-md overflow-hidden mb-4">
           <Image
             src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/441073413_958739272716084_4100520480123690146_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeElgEwrxe9r9-TImGyLeWDN0i5HOfcJwmvSLkc59wnCa341-yAmATps3zU5RAsBsY0M3fDSkwJbUOnM9Pl-M-Ir&_nc_ohc=aBlZON64cGkQ7kNvgEOYHBf&_nc_ht=scontent.fktm19-1.fna&oh=00_AYBGwVhsQd24P6T8N4nLYQLWcf2nk8yGbB8M-7przpra9Q&oe=66C56B25"
             alt="Namw"

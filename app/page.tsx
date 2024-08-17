@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Spotlight } from "@/components/spotlight";
@@ -7,9 +8,34 @@ import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { TextGenerateEffect } from "@/components/ui/text";
 import ProfileCard from "@/components/ui/aboutme";
+import ContactFooter from "@/components/ui/Footer";
 // import Navigation from "@/components/ui/navigation";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-export default function Home() {
+function MyComponent() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      const hash = url.split("#")[1];
+      if (hash) {
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      }
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   const words = ["Hello", "Namaste", "Ciao", "Konnichiwa", "Bonjour"];
   const items = [
     {
@@ -36,7 +62,10 @@ export default function Home() {
   return (
     <main className="bg-black h-full  w-full flex flex-col justify-center items-center sm:p-0 p-4 pb-0 pt-0">
       {/* <BackgroundGradientAnimation> */}
-      <div className="h-[40rem] relative w-full bg-black flex flex-col items-center pt-[8%] justify-start  rounded-md">
+      <div
+        id="Home"
+        className="h-[40rem] relative w-full bg-black flex flex-col items-center pt-[8%] justify-start  rounded-md"
+      >
         <WordFlip
           cursorClassName="text-white blinking-cursor"
           className="text-7xl flex text-white font-mono font-extrabold"
@@ -52,17 +81,20 @@ export default function Home() {
       </div>
 
       {/* </BackgroundGradientAnimation> */}
-      <div className="h-auto lg:h-[200vh] w-full flex justify-center items-center flex-col">
+      <div className="h-auto lg:h-[220vh] w-full flex justify-center items-center flex-col">
         <BackgroundGradientAnimation className=" w-[99vw]  h-auto flex flex-col justify-center items-center">
-          <div className="z-50 text-whit ml-0  lg:ml-[90vw] mt-12 w-11/12 flex-col items-center justify-evenly ">
+          <div className="z-50 text-whit ml-0  lg:ml-[50vw] mt-12 w-auto flex-col items-center justify-evenly ">
             {/* <div className="flex">fg </div>? */}
             <TextGenerateEffect
               words={wordss}
-              className="flex  w-auto lg:w-5/12 text-3xl font-mono"
-            />
+              className="flex  w-auto lg:w-144 text-3xl font-mono"
+            />{" "}
+            <div id="Work"></div>
           </div>
           <HoverEffect className="w-3/4  " items={items} />
-          <ProfileCard className="lg:w-3/4  w-full" />
+          <div id="About"></div>{" "}
+          <ProfileCard className="lg:w-3/4 mb-20 w-full" />
+          <div id="Contact"></div> <ContactFooter />
         </BackgroundGradientAnimation>
       </div>
     </main>
