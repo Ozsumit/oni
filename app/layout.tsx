@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-black w-full overflow-x-hidden">
+      <body className="bg-black w-full ">
         <div className="w-full absolute inset-0 z-10 h-screen">
           <SparklesCore
             id="tsparticlesfullpage"

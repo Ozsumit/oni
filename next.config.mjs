@@ -1,6 +1,6 @@
 // /** @type {import('next').NextConfig} */
 const nextConfig = {
-   basePath: "//oni",
+  //  basePath: "//oni",
   output: "export",
   reactStrictMode: true,
   images: { unoptimized: true },

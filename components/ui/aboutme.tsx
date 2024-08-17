@@ -45,7 +45,7 @@ export const ProfileCard = ({ className }: { className?: string }) => {
       </div>
 
       {/* "What I like" and "What I hate" Sections */}
-      <div className="flex flex-col gap-4 md:w-1/3">
+      <div className="flex flex-col gap-4 w-full lg:w-1/3 md:w-1/3">
         <div className="p-4 rounded-2xl border border-white dark:border-white/[0.2] group-hover:border-slate-700">
           <h3 className="text-2xl font-bold mb-2">What I like</h3>
           <ul className="list-disc list-inside text-lg">

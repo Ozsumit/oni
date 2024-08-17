@@ -34,9 +34,9 @@ export default function Home() {
   const wordss = `Im Experinced in NextJs,Vite and React Native and fluent in HTML CSS and JS. Here are some of the projects i've done`;
 
   return (
-    <main className="bg-black h-auto  w-screen flex flex-col justify-center items-center p-4 pb-0 pt-0">
+    <main className="bg-black h-full  w-full flex flex-col justify-center items-center sm:p-0 p-4 pb-0 pt-0">
       {/* <BackgroundGradientAnimation> */}
-      <div className="h-[40rem] relative w-full bg-black flex flex-col items-center pt-[8%] justify-start  overflow-hidden rounded-md">
+      <div className="h-[40rem] relative w-full bg-black flex flex-col items-center pt-[8%] justify-start  rounded-md">
         <WordFlip
           cursorClassName="text-white blinking-cursor"
           className="text-7xl flex text-white font-mono font-extrabold"
@@ -48,21 +48,21 @@ export default function Home() {
           startDelay={300}
         />
 
-        <h1 className="text-7xl text-center w-3/4 flex text-white font-mono font-extrabold">{`I'm Sumit, a frontend web developer`}</h1>
+        <h1 className="text-7xl text-center sm:w-auto lg:w-3/4    flex text-white font-mono font-extrabold">{`I'm Sumit, a frontend web developer`}</h1>
       </div>
 
       {/* </BackgroundGradientAnimation> */}
-      <div className="h-[200vh]">
+      <div className="h-auto lg:h-[200vh] w-full flex justify-center items-center flex-col">
         <BackgroundGradientAnimation className=" w-[99vw]  h-auto flex flex-col justify-center items-center">
-          <div className="z-50 text-white ml-[100vw] mt-12 w-full flex-col items-center justify-evenly ">
+          <div className="z-50 text-whit ml-0  lg:ml-[90vw] mt-12 w-11/12 flex-col items-center justify-evenly ">
             {/* <div className="flex">fg </div>? */}
             <TextGenerateEffect
               words={wordss}
-              className="flex  w-5/12 text-3xl font-mono"
+              className="flex  w-auto lg:w-5/12 text-3xl font-mono"
             />
           </div>
-          <HoverEffect className="w-3/4 " items={items} />
-          <ProfileCard className="w-3/4" />
+          <HoverEffect className="w-3/4  " items={items} />
+          <ProfileCard className="lg:w-3/4  w-full" />
         </BackgroundGradientAnimation>
       </div>
     </main>
