@@ -34,7 +34,7 @@ export default function RootLayout({
           />
         </div>{" "}
         <div className="">
-          <Navigation />
+          {/* <Navigation /> */}
           {children}
         </div>
       </body>

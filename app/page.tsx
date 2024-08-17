@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Spotlight } from "@/components/spotlight";
@@ -10,32 +9,8 @@ import { TextGenerateEffect } from "@/components/ui/text";
 import ProfileCard from "@/components/ui/aboutme";
 import ContactFooter from "@/components/ui/Footer";
 // import Navigation from "@/components/ui/navigation";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 
-function MyComponent() {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      const hash = url.split("#")[1];
-      if (hash) {
-        setTimeout(() => {
-          const element = document.getElementById(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 100);
-      }
-    };
-
-    router.events.on("routeChangeComplete", handleRouteChange);
-
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-
+export default function Home() {
   const words = ["Hello", "Namaste", "Ciao", "Konnichiwa", "Bonjour"];
   const items = [
     {
@@ -81,9 +56,9 @@ function MyComponent() {
       </div>
 
       {/* </BackgroundGradientAnimation> */}
-      <div className="h-auto lg:h-[220vh] w-full flex justify-center items-center flex-col">
+      <div className="h-auto lg:h-[225vh] w-full flex justify-center items-center flex-col">
         <BackgroundGradientAnimation className=" w-[99vw]  h-auto flex flex-col justify-center items-center">
-          <div className="z-50 text-whit ml-0  lg:ml-[50vw] mt-12 w-auto flex-col items-center justify-evenly ">
+          <div className="z-50 text-white ml-0  lg:ml-[50vw] mt-12 w-auto flex-col items-center justify-evenly p-5 lg:p-0 ">
             {/* <div className="flex">fg </div>? */}
             <TextGenerateEffect
               words={wordss}
